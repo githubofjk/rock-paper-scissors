@@ -8,13 +8,60 @@
 
 <body>
     <script>
-        // computerPlay randomly returns rock, paper, or scissor
+        // computerPlay() randomly returns rock, paper, or scissor
         function computerPlay() {
             var hands = ['Rock', 'Paper', 'Scissor'];
             var hand = hands[Math.floor(Math.random() * hands.length)];
             return hand;
         }
-        console.log(computerPlay());
+
+        // Prompt for user input and store in playerSelection
+        const playerSelection = prompt("Player selection: ");
+        const computerSelection = computerPlay();
+
+        // Ensure input case insensitve
+        function capitalize(input) {
+            input = input.toLowerCase();
+            let upper = input[0].toUpperCase();
+            input = input.replace(input[0], upper);
+            return input;
+        }
+
+        // Player plays one round of rock, paper, scissor vs computer
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = capitalize(playerSelection);
+
+            let result;
+
+            // tie
+            if (playerSelection === computerSelection) {
+                result = "Tie!";
+            }
+            // rock beats scissor
+            else if (playerSelection === "Rock" && computerSelection === "Scissor") {
+                result = "You Win! Rock beats Paper";
+            } else if (computerSelection === "Rock" && playerSelection === "Scissor") {
+                result = "You Lose! Rock beats Paper";
+            }
+            // paper beats rock
+            else if (playerSelection === "Paper" && computerSelection === "Rock") {
+                result = "You Win! Paper beats Rock";
+            } else if (computerSelection === "Paper" && playerSelection === "Rock") {
+                result = "You Lose! Paper beats Rock";
+            }
+            // scissor beats paper
+            else if (playerSelection === "Scissor" && computerSelection === "Paper") {
+                result = "You Win! Scissor beats Paper";
+            } else {
+                result = "You Lose! Scissor beats Paper";
+            }
+
+            return result;
+        }
+
+
+
+        console.log(playRound(playerSelection, computerSelection));
     </script>
 </body>
 
