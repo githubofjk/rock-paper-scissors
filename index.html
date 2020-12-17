@@ -15,10 +15,6 @@
             return hand;
         }
 
-        // Prompt for user input and store in playerSelection
-        const playerSelection = prompt("Player selection: ");
-        const computerSelection = computerPlay();
-
         // Ensure input case insensitve
         function capitalize(input) {
             input = input.toLowerCase();
@@ -31,6 +27,9 @@
         function playRound(playerSelection, computerSelection) {
             playerSelection = capitalize(playerSelection);
 
+            console.log("Player selected: " + playerSelection);
+            console.log("Computer selects: " + computerSelection);
+
             let result;
 
             // tie
@@ -39,9 +38,9 @@
             }
             // rock beats scissor
             else if (playerSelection === "Rock" && computerSelection === "Scissor") {
-                result = "You Win! Rock beats Paper";
+                result = "You Win! Rock beats Scissor";
             } else if (computerSelection === "Rock" && playerSelection === "Scissor") {
-                result = "You Lose! Rock beats Paper";
+                result = "You Lose! Rock beats Scissor";
             }
             // paper beats rock
             else if (playerSelection === "Paper" && computerSelection === "Rock") {
@@ -59,9 +58,44 @@
             return result;
         }
 
+        // Play a 5 round game that keeps score and reports a winner or loser at the end
+        function game() {
+            let score = 0;
+            let roundResult;
+            let gameResult;
 
+            console.log("First to 5 wins.");
 
-        console.log(playRound(playerSelection, computerSelection));
+            for (let i = 0; i < 5; i++) {
+                // Prompt for user input and store in playerSelection
+                let playerSelection = prompt("Player selection: ");
+                let computerSelection = computerPlay();
+
+                roundResult = playRound(playerSelection, computerSelection);
+
+                // Display the results of each round
+                console.log("Round " + (i + 1) + ": " + roundResult);
+
+                // Update score
+                if (roundResult.substr(4, 1) === "W") {
+                    score++;
+                } else if (roundResult.substr(4, 1) === "L") {
+                    score--;
+                }
+            }
+
+            if (score > 0) {
+                gameResult = "Player Wins!";
+            } else if (score === 0) {
+                gameResult = "You Tied!";
+            } else {
+                gameResult = "Computer Wins!";
+            }
+
+            return gameResult;
+        }
+
+        console.log(game());
     </script>
 </body>
 
