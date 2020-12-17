@@ -10,7 +10,7 @@
     <script>
         // computerPlay() randomly returns rock, paper, or scissor
         function computerPlay() {
-            var hands = ['Rock', 'Paper', 'Scissor'];
+            var hands = ['Rock', 'Paper', 'Scissors'];
             var hand = hands[Math.floor(Math.random() * hands.length)];
             return hand;
         }
@@ -37,10 +37,10 @@
                 result = "Tie!";
             }
             // rock beats scissor
-            else if (playerSelection === "Rock" && computerSelection === "Scissor") {
-                result = "You Win! Rock beats Scissor";
-            } else if (computerSelection === "Rock" && playerSelection === "Scissor") {
-                result = "You Lose! Rock beats Scissor";
+            else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+                result = "You Win! Rock beats Scissors";
+            } else if (computerSelection === "Rock" && playerSelection === "Scissors") {
+                result = "You Lose! Rock beats Scissors";
             }
             // paper beats rock
             else if (playerSelection === "Paper" && computerSelection === "Rock") {
@@ -49,10 +49,10 @@
                 result = "You Lose! Paper beats Rock";
             }
             // scissor beats paper
-            else if (playerSelection === "Scissor" && computerSelection === "Paper") {
-                result = "You Win! Scissor beats Paper";
+            else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+                result = "You Win! Scissors beats Paper";
             } else {
-                result = "You Lose! Scissor beats Paper";
+                result = "You Lose! Scissors beats Paper";
             }
 
             return result;
