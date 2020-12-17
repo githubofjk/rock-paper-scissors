@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <script>
+        // computerPlay randomly returns rock, paper, or scissor
+        function computerPlay() {
+            var hands = ['Rock', 'Paper', 'Scissor'];
+            var hand = hands[Math.floor(Math.random() * hands.length)];
+            return hand;
+        }
+        console.log(computerPlay());
+    </script>
+</body>
+
+</html>
