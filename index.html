@@ -62,16 +62,9 @@
             return result;
         }
 
-        /**
-        const btnRock = document.querySelector("#btnRock");
-        btnRock.addEventListener("click", function(e) {
-            return e.srcElement.innerText;
-        });
-        */
-
         const buttons = Array.from(document.querySelectorAll("button"));
         buttons.forEach(button => button.addEventListener("click", function(e) {
-            console.log(e.target.innerText);
+            return e.target.innerText;
         }));
     </script>
 </body>
