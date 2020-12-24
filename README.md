@@ -1,7 +1,13 @@
-# rock-paper-scissors
+# rock-paper-scissors<br>
 
-Basic JavaScript game of rock paper scissors. Inputs via prompt(). No front end UI display, just console.log.
+## 1.0<br>
+Basic JavaScript game of rock paper scissors.<br>
+Inputs via prompt(). No front end UI display, just console.log.<br>
 
-## TODO
+### TODO
 Check invalid inputs and ask for valid input<br>
-Front end UI display, inputs, and outputs
+Front end UI display, inputs, and outputs<br>
+
+## 2.0<br>
+User input via buttons
+

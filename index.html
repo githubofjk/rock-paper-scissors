@@ -7,6 +7,10 @@
 </head>
 
 <body>
+    <button id="btnRock" type="button">Rock</button>
+    <button id="btnPaper" type="button">Paper</button>
+    <button id="btnScissors" type="button">Scissors</button>
+
     <script>
         // computerPlay() randomly returns rock, paper, or scissor
         function computerPlay() {
@@ -58,44 +62,17 @@
             return result;
         }
 
-        // Play a 5 round game that keeps score and reports a winner or loser at the end
-        function game() {
-            let score = 0;
-            let roundResult;
-            let gameResult;
+        /**
+        const btnRock = document.querySelector("#btnRock");
+        btnRock.addEventListener("click", function(e) {
+            return e.srcElement.innerText;
+        });
+        */
 
-            console.log("First to 5 wins.");
-
-            for (let i = 0; i < 5; i++) {
-                // Prompt for user input and store in playerSelection
-                let playerSelection = prompt("Player selection: ");
-                let computerSelection = computerPlay();
-
-                roundResult = playRound(playerSelection, computerSelection);
-
-                // Display the results of each round
-                console.log("Round " + (i + 1) + ": " + roundResult);
-
-                // Update score
-                if (roundResult.substr(4, 1) === "W") {
-                    score++;
-                } else if (roundResult.substr(4, 1) === "L") {
-                    score--;
-                }
-            }
-
-            if (score > 0) {
-                gameResult = "Player Wins!";
-            } else if (score === 0) {
-                gameResult = "You Tied!";
-            } else {
-                gameResult = "Computer Wins!";
-            }
-
-            return gameResult;
-        }
-
-        console.log(game());
+        const buttons = Array.from(document.querySelectorAll("button"));
+        buttons.forEach(button => button.addEventListener("click", function(e) {
+            console.log(e.target.innerText);
+        }));
     </script>
 </body>
 
