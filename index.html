@@ -12,26 +12,13 @@
     <button id="btnScissors" type="button">Scissors</button>
 
     <script>
-        // computerPlay() randomly returns rock, paper, or scissor
-        function computerPlay() {
-            var hands = ['Rock', 'Paper', 'Scissors'];
-            var hand = hands[Math.floor(Math.random() * hands.length)];
-            return hand;
-        }
-
-        // Ensure input case insensitve
-        function capitalize(input) {
-            input = input.toLowerCase();
-            let upper = input[0].toUpperCase();
-            input = input.replace(input[0], upper);
-            return input;
-        }
-
         // Player plays one round of rock, paper, scissor vs computer
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = capitalize(playerSelection);
-
+        function playRound(e) {
+            let playerSelection = e.srcElement.innerText;
             console.log("Player selected: " + playerSelection);
+
+            let hands = ['Rock', 'Paper', 'Scissors'];
+            let computerSelection = hands[Math.floor(Math.random() * hands.length)];
             console.log("Computer selects: " + computerSelection);
 
             let result;
@@ -59,13 +46,12 @@
                 result = "You Lose! Scissors beats Paper";
             }
 
+            console.log(result);
             return result;
         }
 
         const buttons = Array.from(document.querySelectorAll("button"));
-        buttons.forEach(button => button.addEventListener("click", function(e) {
-            return e.target.innerText;
-        }));
+        buttons.forEach(button => button.addEventListener("click", playRound));
     </script>
 </body>
 
