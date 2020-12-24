@@ -12,3 +12,5 @@ DOM manipulation to display hands, results, scores, and winner<br>
 ### TODO
 Add instructions to UI<br>
 Stop game and reset UI once a player gets 5 points and winner is announced.<br>
+Separate script to .js file<br>
+Add CSS<br>
