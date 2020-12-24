@@ -12,13 +12,18 @@
     <button id="btnScissors" type="button">Scissors</button>
 
     <script>
+        // computerPlay() randomly returns rock, paper, or scissor
+        function computerPlay() {
+            let hands = ['Rock', 'Paper', 'Scissors'];
+            let hand = hands[Math.floor(Math.random() * hands.length)];
+            return hand;
+        }
         // Player plays one round of rock, paper, scissor vs computer
         function playRound(e) {
             let playerSelection = e.srcElement.innerText;
             console.log("Player selected: " + playerSelection);
 
-            let hands = ['Rock', 'Paper', 'Scissors'];
-            let computerSelection = hands[Math.floor(Math.random() * hands.length)];
+            let computerSelection = computerPlay();
             console.log("Computer selects: " + computerSelection);
 
             let result;
