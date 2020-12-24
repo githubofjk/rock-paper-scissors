@@ -7,9 +7,15 @@
 </head>
 
 <body>
-    <button id="btnRock" type="button">Rock</button>
-    <button id="btnPaper" type="button">Paper</button>
-    <button id="btnScissors" type="button">Scissors</button>
+    <div>
+        <button id="btnRock" type="button">Rock</button>
+        <button id="btnPaper" type="button">Paper</button>
+        <button id="btnScissors" type="button">Scissors</button>
+    </div>
+    <div id="divResults">
+
+    </div>
+
 
     <script>
         // computerPlay() randomly returns rock, paper, or scissor
@@ -20,11 +26,10 @@
         }
         // Player plays one round of rock, paper, scissor vs computer
         function playRound(e) {
+            // innerText of clicked button
             let playerSelection = e.srcElement.innerText;
-            console.log("Player selected: " + playerSelection);
 
             let computerSelection = computerPlay();
-            console.log("Computer selects: " + computerSelection);
 
             let result;
 
@@ -51,7 +56,8 @@
                 result = "You Lose! Scissors beats Paper";
             }
 
-            console.log(result);
+            const divResults = document.querySelector("#divResults");
+            divResults.textContent = "Player selected: " + playerSelection + " " + "Computer selected: " + computerSelection + " " + result;
             return result;
         }
 
