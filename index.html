@@ -12,12 +12,25 @@
         <button id="btnPaper" type="button">Paper</button>
         <button id="btnScissors" type="button">Scissors</button>
     </div>
-    <div id="divResults">
 
-    </div>
+    <div id="divHands"></div>
+    <div id="divResult"></div>
+    <div id="divScore"></div>
+    <div id="divWinner"></div>
 
 
     <script>
+        const buttons = Array.from(document.querySelectorAll("button"));
+
+        const divHands = document.querySelector("#divHands");
+        const divResult = document.querySelector("#divResult");
+        const divScore = document.querySelector("#divScore");
+        const divWinner = document.querySelector("#divWinner");
+
+
+        let computerScore = 0;
+        let playerScore = 0;
+
         // computerPlay() randomly returns rock, paper, or scissor
         function computerPlay() {
             let hands = ['Rock', 'Paper', 'Scissors'];
@@ -28,8 +41,8 @@
         function playRound(e) {
             // innerText of clicked button
             let playerSelection = e.srcElement.innerText;
-
             let computerSelection = computerPlay();
+            divHands.textContent = "Player selected: " + playerSelection + " " + "Computer selected: " + computerSelection;
 
             let result;
 
@@ -39,29 +52,40 @@
             }
             // rock beats scissor
             else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+                playerScore++;
                 result = "You Win! Rock beats Scissors";
             } else if (computerSelection === "Rock" && playerSelection === "Scissors") {
+                computerScore++;
                 result = "You Lose! Rock beats Scissors";
             }
             // paper beats rock
             else if (playerSelection === "Paper" && computerSelection === "Rock") {
+                playerScore++;
                 result = "You Win! Paper beats Rock";
             } else if (computerSelection === "Paper" && playerSelection === "Rock") {
+                computerScore++;
                 result = "You Lose! Paper beats Rock";
             }
             // scissor beats paper
             else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+                playerScore++;
                 result = "You Win! Scissors beats Paper";
             } else {
+                computerScore++;
                 result = "You Lose! Scissors beats Paper";
             }
 
-            const divResults = document.querySelector("#divResults");
-            divResults.textContent = "Player selected: " + playerSelection + " " + "Computer selected: " + computerSelection + " " + result;
-            return result;
+            divResult.textContent = result;
+            divScore.textContent = "Player score: " + playerScore + " " + "computer score: " + computerScore;
+
+            // announce a winner of the game once one player reaches 5 points.
+            if (playerScore === 5) {
+                divWinner.textContent = "Player Wins!";
+            } else if (computerScore === 5) {
+                divWinner.textContent = "Computer Wins!";
+            }
         }
 
-        const buttons = Array.from(document.querySelectorAll("button"));
         buttons.forEach(button => button.addEventListener("click", playRound));
     </script>
 </body>
